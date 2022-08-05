@@ -1,0 +1,85 @@
+{
+    "available models": "MIConvNet, SincShallowNet, ShallowConvNet, EEGNet",
+    "model": "MIConvNet",
+    "available datasets": "bci2a, bci2b",
+    "dataset": "bci2a",
+    "available approaches": "intra_subject, inter_subject, all",
+    "approach": "intra_subject",
+    "log_dir": "/Path to log/",
+    "num_experiments": 1,
+    "save_model": true,
+    "write_summary": true,
+
+    "hyperparams": {
+
+        "common": {
+            "new_sample_rate": 128,
+            "window_len": 256,
+            "window_stride": 125,
+            "fmin": 0.0,
+            "learning_rate": 0.0001,
+            "batch_size": 16,
+            "num_train_steps": 10000,
+            "warmup_steps": 0,
+            "early_stopping_patience": 10000,
+            "seed": 0,
+            "standardize_data": false
+        },
+
+        "EEGNet": {
+            "num_temp_filters": 8,
+            "temp_filter_size": 33,
+            "num_spatial_filters_x_temp": 2,
+            "num_separable_convs": 16,
+            "dropout_type": "Dropout",
+            "dropout_rate": 0.5
+        },
+
+        "ShallowConvNet": {
+            "num_temp_filters": 40,
+            "temp_filter_size": 13,
+            "dropout_rate": 0.5
+        },
+
+        "SincShallowNet": {
+            "num_temp_filters": 32,
+            "temp_filter_size": 33,
+            "num_spatial_filters_x_temp": 2
+        },
+
+        "MIConvNet": {
+            "num_temp_filters": 32,
+            "temp_filter_size": 33
+        }
+    },
+
+    "datasets": {
+        "bci2a": {
+            "num_eog_channels": 3,
+            "num_eeg_channels": 22,
+            "num_classes": 4,
+            "apply_csp": true,
+            "num_csp": 4,
+            "tmin": 2.5,
+            "tmax": 4.5,
+            "dataset_dir": "/Path to dataset/",
+            "labels_dir": "/Path to labels/",
+            "train_sessions": [["A01T.gdf"], ["A02T.gdf"], ["A03T.gdf"], ["A04T.gdf"], ["A05T.gdf"], ["A06T.gdf"], ["A07T.gdf"], ["A08T.gdf"], ["A09T.gdf"]],
+            "val_sessions": [["A01E.gdf"], ["A02E.gdf"], ["A03E.gdf"], ["A04E.gdf"], ["A05E.gdf"], ["A06E.gdf"], ["A07E.gdf"], ["A08E.gdf"], ["A09E.gdf"]]
+        },
+
+        "bci2b": {
+            "num_eog_channels": 3,
+            "num_eeg_channels": 3,
+            "num_classes": 2,
+            "apply_csp": false,
+            "num_csp": 2,
+            "tmin": 4.0,
+            "tmax": 6.0,
+            "dataset_dir": "/Path to dataset/",
+            "labels_dir": "/Path to labels/",
+            "train_sessions": [["B0101T.gdf", "B0102T.gdf", "B0103T.gdf"], ["B0201T.gdf", "B0202T.gdf", "B0203T.gdf"], ["B0301T.gdf", "B0302T.gdf", "B0303T.gdf"], ["B0401T.gdf", "B0402T.gdf", "B0403T.gdf"], ["B0501T.gdf", "B0502T.gdf", "B0503T.gdf"], ["B0601T.gdf", "B0602T.gdf", "B0603T.gdf"], ["B0701T.gdf", "B0702T.gdf", "B0703T.gdf"], ["B0801T.gdf", "B0802T.gdf", "B0803T.gdf"], ["B0901T.gdf", "B0902T.gdf", "B0903T.gdf"]],
+            "val_sessions": [["B0104E.gdf", "B0105E.gdf"], ["B0204E.gdf", "B0205E.gdf"], ["B0304E.gdf", "B0305E.gdf"], ["B0404E.gdf", "B0405E.gdf"], ["B0504E.gdf", "B0505E.gdf"], ["B0604E.gdf", "B0605E.gdf"], ["B0704E.gdf", "B0705E.gdf"], ["B0804E.gdf", "B0805E.gdf"], ["B0904E.gdf", "B0905E.gdf"]]
+        }
+    }
+}

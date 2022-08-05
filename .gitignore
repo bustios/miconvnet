@@ -1,0 +1,11 @@
+.DS_Store
+.vscode
+
+*.ipynb*
+*.svg
+*.pdf
+*/*.pyc
+*/**/*.pyc
+__pycache__
+*/__pycache__
+*/**/__pycache__
