@@ -15,7 +15,7 @@
         "common": {
             "new_sample_rate": 128,
             "window_len": 256,
-            "window_stride": 125,
+            "window_stride": 128,
             "fmin": 0.0,
             "learning_rate": 0.0001,
             "batch_size": 16,
