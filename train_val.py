@@ -8,7 +8,6 @@ from absl import app
 from absl import logging
 from tqdm import trange
 import mne
-import numpy as np
 import tensorflow as tf
 
 from . import data as data_utils
@@ -20,7 +19,7 @@ mne.set_log_level(verbose='CRITICAL')
 warnings.filterwarnings('ignore', category=DeprecationWarning)
 
 
-def train_step(batch, labels, model, loss_fn, optimizer, accum_loss, 
+def train_step(batch, labels, model, loss_fn, optimizer, accum_loss,
     accum_accuracy):
   """Perform a single training step."""
   # Get the prediction of the models and compute the loss.

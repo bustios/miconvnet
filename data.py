@@ -171,6 +171,8 @@ class Data:
     labels_array = np.squeeze(labels_array)  # shape: [num_epochs,]
 
     if self.config['apply_csp']:
+      # `epochs_array_` has shape:
+      # [num_epochs, num_csp, (tmax - tmin) * new_samp_freq].
       if training:
         self.csp = mne.decoding.CSP(n_components=self.config['num_csp'], 
             transform_into='csp_space', norm_trace=False)
@@ -178,8 +180,6 @@ class Data:
       else:
         epochs_array = self.csp.transform(epochs_array)
 
-    # `epochs_array_` has shape:
-    # [num_epochs, num_csp, (tmax - tmin) * new_samp_freq, 1].
     epochs_array_ = epochs_array[:, :, :, np.newaxis]
     return epochs_array_, labels_array
 

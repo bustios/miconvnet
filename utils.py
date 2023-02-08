@@ -3,8 +3,6 @@ import datetime
 import json
 import os
 
-from absl import app
-import numpy as np
 import tensorflow as tf
 
 

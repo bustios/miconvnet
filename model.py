@@ -266,6 +266,7 @@ class MIConvNet(tf.keras.Model):
 
     x = tf.concat([x1, x2], axis=-1)
 
+    # Band-power feature extraction
     x1 = tf.reduce_sum(x ** 2, axis=2)
     x1 = tf.math.log(x1) - tf.math.log(epochs.shape[2] * 9.)
     x1 = self.flatten(x1)
